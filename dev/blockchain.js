@@ -49,12 +49,12 @@ Blockchain.prototype.proofOfWork = function (previousBlockHash, currentBlockData
     let nonce = 0;
     let hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
 
-    console.log(nonce + ':\t' + hash);
+    //console.log(nonce + ':\t' + hash);
 
     while (hash.substring(0, 4) !== '0000') {
         nonce++;
         hash = this.hashBlock(previousBlockHash, currentBlockData, nonce);
-        console.log(nonce + ':\t\t' + hash);
+        //console.log(nonce + ':\t\t' + hash);
     }
     return nonce;
 }
