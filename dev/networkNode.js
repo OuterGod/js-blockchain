@@ -223,8 +223,12 @@ app.get('/address/:address', function (req, res) {
     const address = req.params.address;
     const addressData = bitcoin.getAddressData(address);
     res.json({
-        address: addressData
+        addressData: addressData
     });
+});
+
+app.get('/block-explorer', function (req, res) {
+    res.sendFile('./block-explorer/index.html', { root: __dirname });
 });
 
 app.listen(port, function () {
