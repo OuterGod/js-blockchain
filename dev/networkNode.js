@@ -92,7 +92,7 @@ app.get('/mine', function (req, res) {
         });
 });
 
-app.post('/receive-new-block', function (req,res) {
+app.post('/receive-new-block', function (req, res) {
     const newBlock = req.body.newBlock;
     const lastBlock = bitcoin.getLastBlock();
     const correctHash = lastBlock.hash === newBlock.previousBlockHash;
@@ -183,7 +183,8 @@ app.get('/consensus', function (req, res) {
                     maxChainLength = blockchain.chain.length;
                     newLongestChain = blockchain.chain;
                     newPendingTransaction = blockchain.pendingTransactions;
-                };
+                }
+                ;
             });
             if (!newLongestChain || (newLongestChain && !bitcoin.chainIsValid(newLongestChain))) {
                 res.json({
@@ -199,6 +200,22 @@ app.get('/consensus', function (req, res) {
                 });
             }
         });
+});
+
+app.get('/block/:blockHash', function (req, res) {
+    const blockHash = req.params.blockHash;
+    const correctBlock = bitcoin.getBlock(blockHash);
+    res.json({
+        block: correctBlock
+    });
+});
+
+app.get('/transaction/:transactionId', function (req, res) {
+
+});
+
+app.get('/address/:address', function (req, res) {
+
 });
 
 app.listen(port, function () {
