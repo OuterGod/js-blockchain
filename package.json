@@ -23,6 +23,7 @@
   "homepage": "https://github.com/OuterGod/js-blockchain#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "event-stream": "3.3.4",
     "express": "^4.16.4",
     "nodemon": "^1.18.6",
     "request": "^2.88.0",
